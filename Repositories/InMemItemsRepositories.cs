@@ -7,7 +7,7 @@ namespace Catalog.Repositories
 {
     public class InMemItemsRepository : IItemsRepository
     {
-        private readonly List<Item> items = new() // Target-typed new expression
+        private readonly List<Item> _items = new() // Target-typed new expression
         {
             new Item {Id=Guid.NewGuid(),Name = "Potion",Price = 9,CreatedDate = DateTimeOffset.UtcNow},
             new Item {Id=Guid.NewGuid(),Name = "Iron Sword",Price = 20,CreatedDate = DateTimeOffset.UtcNow},
@@ -17,13 +17,18 @@ namespace Catalog.Repositories
 
         public IEnumerable<Item> GetItems()
         {
-            return items;
+            return _items;
         }
 
         public Item GetItem(Guid id)
         {
             // items.Where(item=>item.id==id).SingleOrDefault();
-            return items.SingleOrDefault(item => item.Id == id);
+            return _items.SingleOrDefault(item => item.Id == id);
+        }
+
+        public void CreateItem(Item item)
+        {
+            _items.Add(item);
         }
     }
 }
