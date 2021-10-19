@@ -50,3 +50,29 @@ When the class gets instantiated then the Service Container will take care of th
 Data Transfer Object DTO
 
 Is the contract that will be established between the client and service
+
+
+Data annotation 
+Items we can add to props to say that they are required or not
+
+examples here
+[Required] or even [Range]
+
+
+Asynchronous programming
+
+ Waiting for processes that are not dependent on each other like making a breakfast instead
+
+Do different things seperately that dont have to use a result from another process
+You go back to finish it up when there is a result to move to the next stage
+
+
+we want to make calls to the database which are expensive operations to be asynchronous so that callers do not wait but continue and receive the result later
+Async all the way
+
+
+
+Page with healthchecks for AspNetCore
+
+
+https://github.com/Xabaril/AspNetCore.Diagnostics.HealthChecks
