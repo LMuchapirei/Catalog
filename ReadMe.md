@@ -50,3 +50,9 @@ When the class gets instantiated then the Service Container will take care of th
 Data Transfer Object DTO
 
 Is the contract that will be established between the client and service
+
+
+
+code to start my mongodb container with some password as well
+docker run -d --rm --name mongo -p 27017:27017 -v mongodbdata:/data/db -e MONGO_INITDB_ROOT_USERNAME=mongoadmin -e MONGO_INITDB_ROOT_PASSWORD="replace with yours not in quotes"
+
