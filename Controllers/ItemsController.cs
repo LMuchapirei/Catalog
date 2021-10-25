@@ -6,6 +6,7 @@ using Catalog.Dtos;
 using Catalog.Entities;
 using Catalog.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace Catalog.Controllers
 
@@ -15,18 +16,21 @@ namespace Catalog.Controllers
     public class ItemsController : ControllerBase
     {
         private readonly IItemsRepository repository;
+        private readonly ILogger<ItemsController> logger;
 
-        public ItemsController(IItemsRepository repository)
+        public ItemsController(IItemsRepository repository, ILogger<ItemsController> logger)
         {
             this.repository = repository;
+            this.logger = logger;
         }
-        
+
         // GET /items will call this method
         [HttpGet]
         public async Task<IEnumerable<ItemDto>> GetItemsAsync()
         {
             var items = (await repository.GetItemsAsync())
                                         .Select(item=>item.AsDto());
+            logger.LogInformation($"{DateTime.UtcNow.ToString("hh:mm:ss")}: Retrieved {items.Count()} ");
             return items;
         }
         // GET /item/{id}
@@ -57,7 +61,7 @@ namespace Catalog.Controllers
             await repository.CreateItemAsync(item);
             // was neat 😃😃😃
             // look at issue at 2:24:05 this didnot resolve it as indicated
-            return CreatedAtAction("GetItem", new
+            return CreatedAtAction(nameof(GetItemAsync), new
             {
                 id = item.Id
             }, item.AsDto());
