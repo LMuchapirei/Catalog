@@ -52,8 +52,7 @@ namespace Catalog.Api
             services.AddSingleton<IMongoClient>(serviceProvider =>
             {
                 // var settings = Configuration.GetSection(nameof(MongoDbSettings)).Get<MongoDbSettings>();
-                 Console.WriteLine($"Password is {mongoDbSettings.Password} Port is {mongoDbSettings.Port} Host is {mongoDbSettings.Host} UserName is {mongoDbSettings.User}");
-                return new MongoClient(mongoDbSettings.ConnectionString);
+                 return new MongoClient(mongoDbSettings.ConnectionString);
                 // return new MongoClient(settings);
             });
             services.AddSingleton<IItemsRepository, MongoDbItemsRepository>(); // One instance through the lifetime of the application
