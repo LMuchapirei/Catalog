@@ -21,7 +21,7 @@ Dependency Inversion Principle
 
 
 Class --depends on --> Dependency A
-The above is not idea 
+The above is not ideal 
 Class depends on  an abstraction (Interface)  and the actual dependency implement or satisify the contract which is the Interface
 
 Class                          Dependency A
