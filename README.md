@@ -1,9 +1,5 @@
 A basic to intermediate workflow of using .NET ASP.NET WEB API
 
-I coded along a video on youtube link below
-
-https://www.youtube.com/watch?v=ZXdFisA_hOY
-
 Topics
 docker kubernetes mongodb dependency-injection
 
